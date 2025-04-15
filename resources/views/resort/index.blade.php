@@ -58,25 +58,25 @@
                 <form onsubmit="return showReceipt(event, {{ $index }})" class="mt-6 hidden bg-gray-50 p-6 rounded-xl" id="form-{{ $index }}">
                     @csrf
                     <input type="hidden" name="resort_name" value="{{ $resort['name'] }}">
-                    
+
                     <h4 class="text-lg font-semibold text-gray-800 mb-4">Booking Details</h4>
-                    
+
                     <div class="space-y-4">
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
                             <input type="text" name="full_name" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition duration-200">
                         </div>
-                        
+
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
                             <input type="tel" name="phone" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition duration-200" placeholder="0912 345 6789">
                         </div>
-                        
+
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
                             <input type="email" name="email" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition duration-200" placeholder="your@email.com">
                         </div>
-                        
+
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-1">Room Type</label>
                             <select name="room_type" onchange="updatePrice(this, {{ $index }})" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition duration-200">
@@ -86,17 +86,17 @@
                                 <option value="Family Suite" data-price="4000">Family Suite - ₱4,000</option>
                             </select>
                         </div>
-                        
+
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-1">Room Price</label>
                             <input type="text" id="price-{{ $index }}" readonly class="w-full px-4 py-2 border border-gray-300 rounded-lg bg-gray-100 font-medium text-amber-600">
                         </div>
-                        
+
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-1">Number of Guests</label>
                             <input type="number" name="guests" required min="1" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition duration-200">
                         </div>
-                        
+
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-1">Check-In</label>
@@ -107,7 +107,7 @@
                                 <input type="datetime-local" name="check_out" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition duration-200">
                             </div>
                         </div>
-                        
+
                         <!-- GCash Payment Section -->
                         <div class="pt-4 border-t border-gray-200">
                             <h5 class="text-sm font-medium text-gray-700 mb-3 flex items-center">
@@ -127,7 +127,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <button type="submit" class="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-medium py-3 px-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center">
                             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
@@ -154,7 +154,7 @@
                     </svg>
                 </button>
             </div>
-            
+
             <div class="bg-gradient-to-r from-amber-50 to-green-50 p-6 rounded-lg mb-6">
                 <div class="flex items-center justify-center mb-4">
                     <svg class="w-12 h-12 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -164,9 +164,9 @@
                 <h3 class="text-lg font-semibold text-center text-gray-800 mb-2">Booking Successful!</h3>
                 <p class="text-sm text-center text-gray-600">Your reservation has been confirmed. Details have been sent to your email.</p>
             </div>
-            
+
             <div id="receiptDetails" class="space-y-3 text-sm text-gray-700"></div>
-            
+
             <div class="mt-6 pt-4 border-t border-gray-200">
                 <h4 class="text-sm font-medium text-gray-700 mb-2">Payment Instructions</h4>
                 <ol class="list-decimal list-inside space-y-1 text-sm text-gray-600">
@@ -178,7 +178,7 @@
                     <li>Complete the transaction</li>
                 </ol>
             </div>
-            
+
             <button onclick="closeReceipt()" class="mt-6 w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-medium py-3 px-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300">
                 Close
             </button>
@@ -211,41 +211,41 @@
             <div class="grid grid-cols-2 gap-2">
                 <div class="font-medium">Resort:</div>
                 <div>${data.get('resort_name')}</div>
-                
+
                 <div class="font-medium">Name:</div>
                 <div>${data.get('full_name')}</div>
-                
+
                 <div class="font-medium">Phone:</div>
                 <div>${data.get('phone')}</div>
-                
+
                 <div class="font-medium">Email:</div>
                 <div>${data.get('email')}</div>
-                
+
                 <div class="font-medium">Room Type:</div>
                 <div>${data.get('room_type')}</div>
-                
+
                 <div class="font-medium">Guests:</div>
                 <div>${data.get('guests')}</div>
-                
+
                 <div class="font-medium">Check-In:</div>
                 <div>${new Date(data.get('check_in')).toLocaleString()}</div>
-                
+
                 <div class="font-medium">Check-Out:</div>
                 <div>${new Date(data.get('check_out')).toLocaleString()}</div>
-                
+
                 <div class="font-medium">GCash Number:</div>
                 <div>${data.get('gcash')}</div>
-                
+
                 <div class="font-medium">Amount Paid:</div>
                 <div class="font-bold text-green-600">₱${parseFloat(data.get('gcash_amount')).toLocaleString(undefined, {minimumFractionDigits: 2})}</div>
             </div>
         `;
 
         document.getElementById('receiptDetails').innerHTML = receiptHTML;
-        
+
         const modal = document.getElementById('receiptModal');
         const modalContent = document.getElementById('modalContent');
-        
+
         modal.classList.remove('hidden');
         setTimeout(() => {
             modalContent.classList.remove('scale-95', 'opacity-0');
@@ -260,10 +260,10 @@
     function closeReceipt() {
         const modal = document.getElementById('receiptModal');
         const modalContent = document.getElementById('modalContent');
-        
+
         modalContent.classList.remove('scale-100', 'opacity-100');
         modalContent.classList.add('scale-95', 'opacity-0');
-        
+
         setTimeout(() => {
             modal.classList.add('hidden');
         }, 300);

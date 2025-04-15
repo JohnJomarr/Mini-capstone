@@ -26,6 +26,7 @@
                     </div>
                 </header>
             @endif
+
             <main>
                 @yield('content')
             </main>
